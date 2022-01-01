@@ -16,7 +16,7 @@ func TestAll(t *testing.T) {
 	g.Describe("deltadiff", func() {
 
 		g.It("should work in one binary case", func() {
-			g.Timeout(time.Second * 30)
+			g.Timeout(time.Second * 60)
 
 			blocksizes := []int{
 				256,

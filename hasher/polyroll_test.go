@@ -96,7 +96,7 @@ func TestPolyrollHasher(t *testing.T) {
 		})
 
 		g.It("hashing individually and rollingly should be equal (binary)", func() {
-			g.Timeout(time.Second * 30)
+			g.Timeout(time.Second * 60)
 
 			input1, ok1 := testdata.FS.Get("/maamoul-mod.jpg")
 			input2, ok2 := testdata.FS.Get("/maamoul.jpg")

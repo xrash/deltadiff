@@ -4,7 +4,7 @@ This is a delta diffing library and CLI written in Go. It implements a basic rol
 
 I must emphasize how **experimental** this is.
 
-> Note that I'm noticing this failing on large files. Also the code is using the machine dependent `int` type and I only tested it on a 64-bit machine.
+> Note that this could fail on large files. Also the code is using the machine dependent `int` type and I only tested it on a 64-bit machine.
 
 # What is this for
 
@@ -123,9 +123,10 @@ func main() {
 	fmt.Println(target == resultBuffer.String())
 	fmt.Println(target, resultBuffer.String())
 }
-```go
+```
 
 This will output:
+
 
 ```
 match	0:0-4
@@ -145,22 +146,22 @@ aaaabbbbccccddddeeee aaaabbbbccccddddeeee
 Run `deltadiff signature <base> <signature>` to calculate the signature:
 
 ```
-$ deltadiff signature baklawa-mod.jpg signature
+$ deltadiff signature myfile-modified.jpg signature
 ```
 
 Run `deltadiff delta <signature> <target> <delta>` to calculate the delta:
 
 ```
-$ deltadiff delta delta signature baklawa.jpg delta
+$ deltadiff delta delta signature myfile.jpg delta
 ```
 
 Run `deltadiff patch <base> <delta> <result>` to apply the patch:
 
 ```
-$ deltadiff patch baklawa-mod.jpg delta result.jpg
+$ deltadiff patch myfile-modified.jpg delta result.jpg
 ```
 
-Now `result.jpg` is the same as `baklawa.jpg`
+Now `result.jpg` is the same as `myfile.jpg`
 
 # Signature and Delta options
 
@@ -193,12 +194,37 @@ type DeltaConfig struct {
 
 Debugging can be turned on in the CLI through `--debug` and `--debug-file`. When set, it outputs the block matches and the sequence of operations.
 
-# Building the CLI
+# Installing the CLI
 
-Just checkout and run:
+Run the command below:
+
+```
+$ go install github.com/xrash/deltadiff/cmd/deltadiff@latest
+```
+
+Now you should be able to run:
+
+```
+$ deltadiff
+```
+
+# Compiling CLI locally
+
+Checkout and run:
 
 ```
 $ make
 ```
 
 Now move `./bin/deltadiff` wherever you want.
+
+# Running tests
+
+
+Checkout and run:
+
+```
+$ make test
+```
+
+It will take a while.
