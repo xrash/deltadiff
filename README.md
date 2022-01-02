@@ -47,14 +47,14 @@ The signature is a byte encoded file in the following format:
 
 The delta is a byte encoded file containing only a sequence of operations. Those operations can be of one of two types: Read or Write. Read operations always refer to `base` and Write operations always refer to `target`. Therefore, Read operations can be read as "Read from base" and Write operations can be read as "Write from target".
 
-For example, imagine the following `target` and `base`:
+For example, consider the following `target` and `base`:
 
 ```
 target = aaaabbbbccccddddeeee
 base   = aaaabbbbccccddeeeeee
 ```
 
-In order to transform `base` into `target`, this is a sequence of `read` and `write` operations that can be applied:
+In order to transform `base` into `target`, if `block size` is 4, this is a sequence of `read` and `write` operations that can be applied:
 
 ```
 1. read:0-12
