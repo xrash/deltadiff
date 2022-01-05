@@ -41,7 +41,7 @@ The signature is a byte encoded file in the following format:
 
 **base size** This is the size of `base`. It's necessary because delta will only have access to the signature, so it doesn't know the size of `base` unless we tell it.
 
-**blocks** The remaining of the signature is a sequence of `block size`-sized blocks.
+**blocks** The remaining of the signature is a sequence of hashed `block size`-sized blocks.
 
 # Delta
 
